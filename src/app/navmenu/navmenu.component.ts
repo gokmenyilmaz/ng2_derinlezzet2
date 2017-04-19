@@ -11,11 +11,11 @@ import {AppGlobalsService} from "../globals";
 
 export class NavmenuComponent {
 
-    userPhoto:string;
+    public userPhoto:string;
 
     @ViewChild('smallMenu') smallMenu: ElementRef;
 
-    constructor(private globalService:AppGlobalsService)
+    constructor(public globalService:AppGlobalsService)
     {
        this.globalService.logInGenel();
     }

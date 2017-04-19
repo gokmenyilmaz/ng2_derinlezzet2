@@ -14,12 +14,12 @@ import { AngularFire, AuthProviders,FirebaseListObservable, AuthMethods,Firebase
 @Injectable() 
 export class AppGlobalsService {
 
-  _userInfo:UserInfo;
+  public _userInfo:UserInfo;
   public user:BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>(this._userInfo);
 
   constructor(private af: AngularFire)
   {
-    
+  
   }
 
   logInGenel()

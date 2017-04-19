@@ -35,7 +35,7 @@ export class HaftalikMenuComponent {
 
      _isEditMode:boolean=false;
 
-    constructor(private haftalikMenuService: HaftalikMenuService,private globalService:AppGlobalsService) {
+    constructor(private haftalikMenuService: HaftalikMenuService,public globalService:AppGlobalsService) {
 
         this.varsayilanTarihAyarla();
         this.yukle();

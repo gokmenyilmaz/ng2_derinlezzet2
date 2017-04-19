@@ -24,7 +24,7 @@ export class AlakartComponent implements OnInit {
 
 
 
-    constructor(private alakartService: AlakartService, private globalService: AppGlobalsService) {
+    constructor(private alakartService: AlakartService, public globalService: AppGlobalsService) {
 
         this.setBosAlakartMenus();
     }

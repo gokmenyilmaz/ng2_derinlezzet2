@@ -18,5 +18,5 @@ import { Component } from '@angular/core';
   })
 
 export class MyTabComponent {
-  visible: false;
+  visible:boolean=false;
 }

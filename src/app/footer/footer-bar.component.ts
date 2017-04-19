@@ -23,7 +23,7 @@ export class FooterBarComponent {
     _user:User;
 
 
-    constructor(private footerBarService: FooterBarService,private globalService:AppGlobalsService) 
+    constructor(private footerBarService: FooterBarService,public globalService:AppGlobalsService) 
     {
         this.setFirmaDefault();
         

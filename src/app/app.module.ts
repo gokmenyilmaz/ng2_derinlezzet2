@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AngularFireModule } from 'angularfire2';
-import { SharedModule, MyW3CarouselComponent, MyTabComponent } from './shared/index';
+import { SharedModule, MyW3CarouselComponent, MyTabComponent,MyHighLightDirective } from './shared/index';
 
 
 import { NavmenuComponent } from './navmenu/navmenu.component';
@@ -56,7 +56,11 @@ export const config = {
     ResimGaleriComponent,
     IstatistikBarComponent,
     FooterBarComponent,
-    EkipmanComponent
+    EkipmanComponent,
+
+    MyHighLightDirective
+
+
   ],
   bootstrap: [AppComponent],
   providers:[AppGlobalsService]
