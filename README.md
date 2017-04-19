@@ -1,6 +1,8 @@
 git config user.name "gokmen.yilmaz"
 git config user.email "gokmen1977@gmail.com"
 
+ng build --target=production --base-href ./
+
 # NgDerinlezzet
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
