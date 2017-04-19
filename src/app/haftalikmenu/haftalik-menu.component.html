@@ -1,0 +1,80 @@
+<div id="haftalikmenu" class=" w3-content w3-container w3-padding-32 w3-center">
+    <div  class="w3-container w3-padding-32 w3-center  w3-wide">
+        <h3 style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">HAFTALIK TABLDOT MENÜ</h3>
+
+        <div *ngIf="globalService._userInfo" style="text-align: center">
+            <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
+            <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
+        </div>
+    </div>
+
+    <div *ngIf="_isEditMode" id="sorguPanel">
+        <div style="display: flex;justify-content:space-around">
+            <input class="w3-input w3-border" type="number" [(ngModel)]="yil" (change)="tarihDegisti()" />
+
+            <select class="w3-input w3-border" [(ngModel)]="ay_onikili" (change)="tarihDegisti()">
+                <option *ngFor="let c of aylar" [ngValue]="c.id">{{c.value}}</option>
+            </select>
+
+            <select class="w3-input w3-border" [(ngModel)]="pazartesiKey" (change)="gunDegisti()">
+                <option value="-1">Seçiniz (Gun)</option>
+                <option *ngFor="let g of ay_pazartesiler" [ngValue]="g.id">{{g.value}}</option>
+            </select>
+        </div>
+      
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap;justify-content:space-around;">
+       <article class="w3-col l2 m5 s12 "  *ngFor='let menu_gun of YemekMenuGunListe;let i = index'>
+        <fieldset class="w3-display-container w3-card-2 w3-round  w3-center">
+            <div class="w3-container">
+                <h4 class="w3-black" style="margin:0 -20px">{{menu_gun.GunAd}}</h4>
+                <span class="ng-binding">{{menu_gun.Tarih}}</span>
+                <div class="secenekler" *ngIf="_isEditMode">
+                    <div>
+                        <label><input type="checkbox" [(ngModel)]="menu_gun.FiyatlarGorunsunMu" name="checkbox" value="value">Fiyatlar Görünsün Mü?</label>
+                    </div>
+                    <div>
+                        <label><input type="checkbox" [(ngModel)]="menu_gun.ToplamFiyatGorunsunMu" name="checkbox" value="value">Toplam Fiyat Görünsün Mü?</label>
+                    </div>
+
+                    <div>
+                        <span class="w3-btn w3-teal" style="font-size: 12px" (click)="yeniSatirEkle(menu_gun)">
+                           + Satır Ekle
+                         </span>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <ul class="gunSutun">
+                <li *ngFor="let x of menu_gun.YemekMenuItems;let i=index" (mouseleave)="x.hovering=null" (mouseenter)="x.hovering=i">
+                    <div *ngIf="_isEditMode" style="display: flex;position: relative">
+                        <input style="display: inline-block;width: 100%" type="text" [(ngModel)]="menu_gun.YemekMenuItems[i].YemekAdi" />
+                        <input *ngIf="menu_gun.FiyatlarGorunsunMu" style="display: inline-block;width: 60px" type="text" [(ngModel)]="menu_gun.YemekMenuItems[i].Fiyat"
+                        />
+                        <span title="Sil" (click)='satirSil(menu_gun,x)' (mouseenter)='delHovering=true' (mouseleave)='delHovering=false' [class.hover-delete]='delHovering'
+                            class="delSpan" *ngIf="x.hovering==i">
+                            <i class="fa fa-times"></i>
+                        </span>
+                    </div>
+                    <div class="yemekMenuItem" *ngIf="!_isEditMode" style="display: flex;">
+                        <div [class.w3-center]="!menu_gun.FiyatlarGorunsunMu" style="display: inline-block;width: 100%;text-align: left">{{menu_gun.YemekMenuItems[i].YemekAdi}}</div>
+                        <div *ngIf="menu_gun.FiyatlarGorunsunMu" class="yemekfiyat" style="display: inline-block;width: 60px">{{menu_gun.YemekMenuItems[i].Fiyat}}</div>
+                    </div>
+                </li>
+
+            </ul>
+
+            <div *ngIf="_isEditMode && menu_gun.ToplamFiyatGorunsunMu">
+                Toplam : <input type="text" [(ngModel)]="menu_gun.ToplamFiyat" />
+            </div>
+            <div class="fiyat w3-display-bottommiddle w3-block" style="padding-bottom:10px;" *ngIf="!_isEditMode && menu_gun.ToplamFiyatGorunsunMu">
+                Toplam : <strong style="font-size:1.1rem">{{menu_gun.ToplamFiyat}}</strong>
+            </div>
+        </fieldset>
+       </article>
+    </div>
+
+</div>
