@@ -12,7 +12,8 @@
         "favicon.png",
         "CNAME",
         ".nojekyll",
-        "_config.yml"
+        "_config.yml",
+        "styles.css"
       ],
       "index": "index.html",
       "main": "main.ts",
