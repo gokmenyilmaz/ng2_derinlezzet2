@@ -12,6 +12,7 @@
       if (redirect && redirect != location.href) {
         redirect = redirect.replace('/bzkmz', '/#anasayfa');
         redirect = redirect.replace('/menu', '/#haftalikmenu');
+        redirect = redirect.replace('/dist', '/');
         history.replaceState(null, null, redirect);
       }
     })();
