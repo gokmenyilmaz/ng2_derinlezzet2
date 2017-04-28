@@ -13,7 +13,8 @@
         "CNAME",
         ".nojekyll",
         "_config.yml",
-        "styles.css"
+        "styles.css",
+        "404.html"
       ],
       "index": "index.html",
       "main": "main.ts",
