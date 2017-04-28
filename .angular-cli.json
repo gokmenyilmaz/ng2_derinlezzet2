@@ -7,9 +7,12 @@
     {
       "root": "src",
       "outDir": "dist",
-      "../assets": [
-        "../assets",
-        "favicon.ico"
+      "assets": [
+        "assets",
+        "favicon.png",
+        "CNAME",
+        ".nojekyll",
+        "_config.yml"
       ],
       "index": "index.html",
       "main": "main.ts",

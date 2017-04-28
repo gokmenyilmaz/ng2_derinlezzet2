@@ -6,17 +6,7 @@
   <title>Derin lezzet</title>
 
   <script>
-    (function () {
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-
-      if (redirect && redirect != location.href) {
-        redirect = redirect.replace('/bzkmz', '/#anasayfa');
-        redirect = redirect.replace('/menu', '/#haftalikmenu');
-        history.replaceState(null, null, redirect);
-      }
-
-    })();
+  
   </script>
 
 
@@ -39,11 +29,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link rel="stylesheet" href="../src/assets/libs/font-awesome-animation.css">
+  <link rel="stylesheet" href="./assets/libs/font-awesome-animation.css">
   
   <!--font kısmı-->
-  <link rel="stylesheet" href="../src/assets/font_tl.woff?family=tl" >
-  <link rel="stylesheet" href="../src/styles.css">
+  <link rel="stylesheet" href="./assets/font_tl.woff?family=tl" >
+ 
+ 
+  <link rel="stylesheet" href="./styles.css">
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1LEkHgsMxGtq0HJRuPW8Ho1O0AdUhFns"></script>
 
