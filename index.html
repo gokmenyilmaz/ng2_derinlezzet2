@@ -5,8 +5,16 @@
   <meta charset="utf-8">
   <title>Derin lezzet</title>
 
-  <script>
-  
+<script>
+    (function () {
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        redirect = redirect.replace('/bzkmz', '/#anasayfa');
+        redirect = redirect.replace('/menu', '/#haftalikmenu');
+        history.replaceState(null, null, redirect);
+      }
+    })();
   </script>
 
 
