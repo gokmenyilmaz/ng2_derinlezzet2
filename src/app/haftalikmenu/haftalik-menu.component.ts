@@ -34,7 +34,7 @@ export class HaftalikMenuComponent {
     YemekMenuGunListe: YemekMenuGun[] = [];
     yil: number;
     ay_onikili: number;
-    pazartesiKey: number;
+    aktifPazartesiKey: number;
     ay_pazartesiler: KeyValue[] = [];
 
      _isEditMode:boolean=false;
@@ -54,7 +54,7 @@ export class HaftalikMenuComponent {
         this.ay_pazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili)
 
         var ptGun = d.getDate() - d.getDay() + 1;
-        this.pazartesiKey = ptGun;
+        this.aktifPazartesiKey = ptGun;
 
     
 
@@ -62,7 +62,7 @@ export class HaftalikMenuComponent {
              this.ay_onikili = this.ay_onikili-1;
              var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
 
-            this.pazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
+            this.aktifPazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
                 
         }
 
@@ -72,11 +72,11 @@ export class HaftalikMenuComponent {
     yukle() {
         this.YemekMenuGunListe = [];
 
-        if (this.pazartesiKey == -1) return;
+        if (this.aktifPazartesiKey == -1) return;
 
-        console.log(this.yil, this.ay_onikili, this.pazartesiKey,this.pazartesiKey);
+        console.log(this.yil, this.ay_onikili, this.aktifPazartesiKey,this.aktifPazartesiKey);
 
-        this.haftalikMenuService.haftaVerileriniGetir(this.yil, this.ay_onikili, this.pazartesiKey).subscribe(data => {
+        this.haftalikMenuService.haftaVerileriniGetir(this.yil, this.ay_onikili, this.aktifPazartesiKey).subscribe(data => {
             this.YemekMenuGunListe = data;
             if (data.$exists() == false) {
                 this.setBosYemekMenuItems();
@@ -89,7 +89,7 @@ export class HaftalikMenuComponent {
 
         for (let g = 0; g < 5; g++) {
             let tarih = new Date();
-            tarih.setFullYear(this.yil, this.ay_onikili - 1, this.pazartesiKey + g);
+            tarih.setFullYear(this.yil, this.ay_onikili - 1, this.aktifPazartesiKey + g);
 
             let gun = new YemekMenuGun(tarih.toLocaleDateString(), this.gunler[tarih.getDay() - 1],false,true,0, []);
 
@@ -104,7 +104,7 @@ export class HaftalikMenuComponent {
 
     tarihDegisti() {
         this.ay_pazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
-        this.pazartesiKey = -1;
+        this.aktifPazartesiKey = -1;
 
         this.yukle();
 
@@ -116,7 +116,7 @@ export class HaftalikMenuComponent {
     }
 
     kaydet() {
-        this.haftalikMenuService.haftaVeriKaydet(this.yil, this.ay_onikili, this.pazartesiKey, this.YemekMenuGunListe);
+        this.haftalikMenuService.haftaVeriKaydet(this.yil, this.ay_onikili, this.aktifPazartesiKey, this.YemekMenuGunListe);
         this._isEditMode=false;
     }
 
