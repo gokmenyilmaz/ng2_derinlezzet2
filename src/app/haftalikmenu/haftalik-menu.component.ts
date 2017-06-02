@@ -55,10 +55,14 @@ export class HaftalikMenuComponent {
         this.aktifPazartesiKey = ptGun;
 
         if(d.getDate()< Number(this.ay_pazartesiler[0].value)) {
-             this.ay_onikili = this.ay_onikili-1;
+             let oncekiAy= this.ay_onikili-1;
+
+            //  if(this.ay_onikili<oncekiAy) this.yil=this.yil-1;
+             this.ay_onikili=oncekiAy;
+
              var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
 
-            this.aktifPazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
+             this.aktifPazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
    
         }
 

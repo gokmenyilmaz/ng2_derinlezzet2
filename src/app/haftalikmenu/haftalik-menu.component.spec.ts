@@ -20,7 +20,7 @@ export const config = {
   messagingSenderId: "310765295981"
 };
 
-describe('haftalik-menu pazartesi testi- yıl içinde yap sonra', () => {
+describe('haftalik-menu pazartesi testi', () => {
 
   let comp: HaftalikMenuComponent;
 
@@ -111,6 +111,16 @@ describe('haftalik-menu pazartesi testi- yıl içinde yap sonra', () => {
     
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 11));
     expect(comp.aktifPazartesiKey).toBe(7);
+
+  });
+
+  it('25/06/2017 de', () => {
+
+    comp.yil = 2017;
+    comp.ay_onikili = 6;
+    
+    comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 25));
+    expect(comp.aktifPazartesiKey).toBe(19);
 
   });
 
