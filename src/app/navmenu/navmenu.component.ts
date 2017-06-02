@@ -17,7 +17,7 @@ export class NavmenuComponent {
 
     constructor(public globalService:AppGlobalsService)
     {
-       this.globalService.signInWithFacebook();
+      
     }
 
     signInWithFacebook()

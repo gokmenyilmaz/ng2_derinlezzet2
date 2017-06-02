@@ -25,7 +25,8 @@ export class AppGlobalsService {
     this.afAuth.auth
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(userdata=>{
-          this._userInfo=userdata.auth;
+          
+          this._userInfo=userdata.user;
           this.user.next(this._userInfo);
       })
       .catch(hata=>{
