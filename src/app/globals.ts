@@ -42,7 +42,7 @@ export class AppGlobalsService {
         
        this._userInfo=null;
         location.reload();
-       
+       //test
       
   }
 }
