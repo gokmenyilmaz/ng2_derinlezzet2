@@ -51,16 +51,14 @@ export class HaftalikMenuComponent {
         this.ay_onikili = d.getMonth() + 1;
         this.ay_pazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili)
 
-        var ptGun = d.getDate() - d.getDay() + 1;
-        this.aktifPazartesiKey = ptGun;
+        this.aktifPazartesiKey = this.getirPazartesiIdGunden(d);;
 
         if(d.getDate()< Number(this.ay_pazartesiler[0].value)) {
-             let oncekiAy= this.ay_onikili-1;
+             let oncekiAy_onikili= this.ay_onikili-1;
 
-            //  if(this.ay_onikili<oncekiAy) this.yil=this.yil-1;
-             this.ay_onikili=oncekiAy;
-
-             var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
+             if(this.ay_onikili<oncekiAy_onikili) this.yil=this.yil-1;
+         
+             var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, oncekiAy_onikili);
 
              this.aktifPazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
    
@@ -68,6 +66,12 @@ export class HaftalikMenuComponent {
 
 
     }
+
+    getirPazartesiIdGunden(d:Date):number{
+        var s=(d.getDay()==0) ? 7 : d.getDay();
+        return d.getDate() -s + 1;
+    }
+
 
     yukle() {
         this.YemekMenuGunListe = [];
