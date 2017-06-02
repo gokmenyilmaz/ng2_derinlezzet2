@@ -18,7 +18,11 @@ import {UserInfo}  from 'firebase';
     providers: [HaftalikMenuService]
 })
 
+
+
+
 export class HaftalikMenuComponent {
+    readonly MAX_YEMEKGUN_SAYISI: number=7;
 
     gunler = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
     aylar = [
@@ -52,6 +56,17 @@ export class HaftalikMenuComponent {
         var ptGun = d.getDate() - d.getDay() + 1;
         this.pazartesiKey = ptGun;
 
+    
+
+        if(Number(this.ay_pazartesiler[0].value)<this.MAX_YEMEKGUN_SAYISI){
+             this.ay_onikili = this.ay_onikili-1;
+             var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
+
+            this.pazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
+                
+        }
+
+
     }
 
     yukle() {
@@ -59,6 +74,7 @@ export class HaftalikMenuComponent {
 
         if (this.pazartesiKey == -1) return;
 
+        console.log(this.yil, this.ay_onikili, this.pazartesiKey,this.pazartesiKey);
 
         this.haftalikMenuService.haftaVerileriniGetir(this.yil, this.ay_onikili, this.pazartesiKey).subscribe(data => {
             this.YemekMenuGunListe = data;
