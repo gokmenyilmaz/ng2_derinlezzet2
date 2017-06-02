@@ -54,9 +54,7 @@ export class HaftalikMenuComponent {
         var ptGun = d.getDate() - d.getDay() + 1;
         this.aktifPazartesiKey = ptGun;
 
-    
-
-        if(Number(this.ay_pazartesiler[0].value)<this.MAX_YEMEKGUN_SAYISI){
+        if(d.getDate()< Number(this.ay_pazartesiler[0].value)) {
              this.ay_onikili = this.ay_onikili-1;
              var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
 

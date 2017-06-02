@@ -44,7 +44,8 @@ export const config = {
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule
   ],
   declarations:
   [
