@@ -41,14 +41,12 @@ export class HaftalikMenuComponent {
 
     constructor(private haftalikMenuService: HaftalikMenuService,public globalService:AppGlobalsService) {
 
-        this.varsayilanTarihAyarla();
+        this.varsayilanTarihAyarla(new Date());
         this.yukle();
 
     }
 
-    varsayilanTarihAyarla() {
-        var d = new Date();
-
+    varsayilanTarihAyarla(d:Date) {
         this.yil = d.getFullYear();
         this.ay_onikili = d.getMonth() + 1;
         this.ay_pazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili)
@@ -63,7 +61,7 @@ export class HaftalikMenuComponent {
              var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
 
             this.aktifPazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
-                
+   
         }
 
 
