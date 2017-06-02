@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AngularFireModule } from 'angularfire2';
-import { SharedModule, MyW3CarouselComponent, MyTabComponent,MyHighLightDirective } from './shared/index';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { SharedModule, MyW3CarouselComponent, MyTabComponent,MyHighLightDirective } from './shared/index';
 
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { HomeComponent } from './_home/home.component';
@@ -40,6 +42,8 @@ export const config = {
   [
     BrowserModule, SharedModule,
     AngularFireModule.initializeApp(config),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     FormsModule
   ],
   declarations:

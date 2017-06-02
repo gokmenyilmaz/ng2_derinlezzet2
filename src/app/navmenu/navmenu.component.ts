@@ -17,15 +17,15 @@ export class NavmenuComponent {
 
     constructor(public globalService:AppGlobalsService)
     {
-       this.globalService.logInGenel();
+      
     }
 
-    logIn()
+    signInWithFacebook()
     {
         if(this.globalService._userInfo)
-             this.globalService.logOut();
+             this.globalService.signOut();
         else{
-             this.globalService.logIn();
+             this.globalService.signInWithFacebook();
         }
     }
 

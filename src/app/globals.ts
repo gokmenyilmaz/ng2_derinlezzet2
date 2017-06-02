@@ -7,7 +7,9 @@ import {User} from "./_models/User";
 import {UserInfo}  from 'firebase';
 
 
-import { AngularFire, AuthProviders,FirebaseListObservable, AuthMethods,FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { FirebaseListObservable,FirebaseObjectObservable } from 'angularfire2/database';
 
 
 
@@ -17,35 +19,27 @@ export class AppGlobalsService {
   public _userInfo:UserInfo;
   public user:BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>(this._userInfo);
 
-  constructor(private af: AngularFire)
-  {
-  
-  }
+  constructor(private afAuth: AngularFireAuth) {  }
 
-  logInGenel()
-  {
-
-  }
-
-  logIn(){
-      this.af.auth.login({ 
-          provider: AuthProviders.Facebook, 
-          method: AuthMethods.Popup
-        }).then(userdata=>{
-          this._userInfo=userdata.auth;
+  signInWithFacebook() {
+    this.afAuth.auth
+      .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then(userdata=>{
+          
+          this._userInfo=userdata.user;
           this.user.next(this._userInfo);
-      }).catch(hata=>{
+      })
+      .catch(hata=>{
           console.log(hata);
           alert("mail adresi veya parolanız yanlış...");
       })
- 
   }
 
-  logOut()
+  
+  signOut()
   {
-      
-       this.af.auth.logout();
-       
+      this.afAuth.auth.signOut();
+        
        this._userInfo=null;
         location.reload();
        

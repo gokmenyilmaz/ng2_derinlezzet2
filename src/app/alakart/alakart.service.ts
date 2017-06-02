@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import {AlakartMenu} from '../_models/AlakartMenu';
 import {AlakartMenuItem} from '../_models/AlakartMenuItem';
@@ -7,14 +7,12 @@ import {AlakartMenuItem} from '../_models/AlakartMenuItem';
 @Injectable()
 export class AlakartService {
 
-    constructor(private af: AngularFire) {
-
-    }
+    constructor(private afDb: AngularFireDatabase) {}
 
     alakartVerileriniGetir() {
 
         var yol = `/AlakartMenu`;
-        return this.af.database.object(yol);
+        return this.afDb.object(yol);
     }
 
     alakartVeriKaydet(data:AlakartMenu[] ) {
@@ -22,7 +20,7 @@ export class AlakartService {
         delete data['$key'];
         delete data['$exists'];
 
-        return this.af.database.object(yol).set(data);
+        return this.afDb.object(yol).set(data);
 
     }
 
