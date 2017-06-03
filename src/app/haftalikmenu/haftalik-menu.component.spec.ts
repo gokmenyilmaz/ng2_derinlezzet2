@@ -134,4 +134,20 @@ describe('haftalik-menu pazartesi testi', () => {
     });
 
 
+   it('fonksiyon 1/1/2017 de', () => {
+      comp.ay_onikili=1;
+      var _date=new Date(2017, comp.ay_onikili -1, 1);
+    
+      var x=comp.getirPazartesiIdGunden(_date);
+       expect(x).toBe(26);
+    });
+
+   it('fonksiyon 25/6/2017 de', () => {
+      comp.ay_onikili=6;
+      var _date=new Date(2017, comp.ay_onikili -1,25);
+    
+      var x=comp.getirPazartesiIdGunden(_date);
+       expect(x).toBe(19);
+    });
+
 });

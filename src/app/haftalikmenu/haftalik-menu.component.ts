@@ -55,11 +55,11 @@ export class HaftalikMenuComponent {
 
         if(d.getDate()< Number(this.ay_pazartesiler[0].value)) {
              let oncekiAy_onikili= this.ay_onikili-1;
+             if(oncekiAy_onikili==0) oncekiAy_onikili=12;
 
              if(this.ay_onikili<oncekiAy_onikili) this.yil=this.yil-1;
          
              var oncekiAyPazartesiler = this.getAyPazartesiler(this.yil, oncekiAy_onikili);
-
              this.aktifPazartesiKey =Number(oncekiAyPazartesiler[oncekiAyPazartesiler.length-1].value);
    
         }
@@ -68,8 +68,10 @@ export class HaftalikMenuComponent {
     }
 
     getirPazartesiIdGunden(d:Date):number{
-        var s=(d.getDay()==0) ? 7 : d.getDay();
-        return d.getDate() -s + 1;
+      
+       var day = d.getDay(),
+       diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+       return new Date(d.setDate(diff)).getDate();
     }
 
 
