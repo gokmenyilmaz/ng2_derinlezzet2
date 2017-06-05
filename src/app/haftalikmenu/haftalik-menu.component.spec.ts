@@ -54,7 +54,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.yil = 2017;
     comp.ay_onikili = 6;
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 2));
-    expect(comp.aktifPazartesiKey).toBe(29);
+    expect(comp.pazartesiKey).toBe(29);
 
   });
  
@@ -63,7 +63,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.yil = 2017;
     comp.ay_onikili = 6;
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 6));
-    expect(comp.aktifPazartesiKey).toBe(5);
+    expect(comp.pazartesiKey).toBe(5);
 
   });
 
@@ -72,7 +72,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.yil = 2017;
     comp.ay_onikili = 6;
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 29));
-    expect(comp.aktifPazartesiKey).toBe(26);
+    expect(comp.pazartesiKey).toBe(26);
 
   });
 
@@ -81,7 +81,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.yil = 2017;
     comp.ay_onikili = 7;
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili-1, 3));
-    expect(comp.aktifPazartesiKey).toBe(3);
+    expect(comp.pazartesiKey).toBe(3);
 
   });
 
@@ -90,7 +90,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.yil = 2017;
     comp.ay_onikili = 8;
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 6));
-    expect(comp.aktifPazartesiKey).toBe(31);
+    expect(comp.pazartesiKey).toBe(31);
 
   });
 
@@ -99,7 +99,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.yil = 2017;
     comp.ay_onikili = 8;
     comp.varsayilanTarihAyarla(new Date(2017,comp.ay_onikili -1, 11));
-    expect(comp.aktifPazartesiKey).toBe(7);
+    expect(comp.pazartesiKey).toBe(7);
 
   });
 
@@ -110,7 +110,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.ay_onikili = 8;
     
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 11));
-    expect(comp.aktifPazartesiKey).toBe(7);
+    expect(comp.pazartesiKey).toBe(7);
 
   });
 
@@ -120,7 +120,7 @@ describe('haftalik-menu pazartesi testi', () => {
     comp.ay_onikili = 6;
     
     comp.varsayilanTarihAyarla(new Date(2017, comp.ay_onikili -1, 25));
-    expect(comp.aktifPazartesiKey).toBe(19);
+    expect(comp.pazartesiKey).toBe(19);
 
   });
 
@@ -129,7 +129,7 @@ describe('haftalik-menu pazartesi testi', () => {
       comp.ay_onikili=6;
       var _date=new Date(2017, comp.ay_onikili -1, 25);
     
-      var x=comp.getirPazartesiIdGunden(_date);
+      var x=comp.getirPazartesiKeyGunden(_date);
        expect(x).toBe(19);
     });
 
@@ -138,7 +138,7 @@ describe('haftalik-menu pazartesi testi', () => {
       comp.ay_onikili=1;
       var _date=new Date(2017, comp.ay_onikili -1, 1);
     
-      var x=comp.getirPazartesiIdGunden(_date);
+      var x=comp.getirPazartesiKeyGunden(_date);
        expect(x).toBe(26);
     });
 
@@ -146,7 +146,7 @@ describe('haftalik-menu pazartesi testi', () => {
       comp.ay_onikili=6;
       var _date=new Date(2017, comp.ay_onikili -1,25);
     
-      var x=comp.getirPazartesiIdGunden(_date);
+      var x=comp.getirPazartesiKeyGunden(_date);
        expect(x).toBe(19);
     });
 
