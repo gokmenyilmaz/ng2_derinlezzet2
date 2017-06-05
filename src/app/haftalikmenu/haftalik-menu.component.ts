@@ -63,10 +63,6 @@ export class HaftalikMenuComponent {
 
     }
 
-    gunDegisti() {
-        this.haftalikMenuleriYukle();
-    }
-
     tarihDegisti() {
         this.ay_pazartesiler = this.getAyPazartesiler(this.yil, this.ay_onikili);
         this.pazartesiKey = -1;
@@ -74,6 +70,12 @@ export class HaftalikMenuComponent {
         this.haftalikMenuleriYukle();
 
     }
+    
+    gunDegisti() {
+        this.haftalikMenuleriYukle();
+    }
+
+   
 
     haftalikMenuleriYukle() {
         this.YemekMenuGunListe = [];
