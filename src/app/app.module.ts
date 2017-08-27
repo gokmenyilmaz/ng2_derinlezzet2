@@ -12,6 +12,7 @@ import { HomeComponent } from './_home/home.component';
 import { MainSlideComponent } from './mainslide/main-slide.component';
 import { HakkimizdaComponent } from './hakkimizda/hakkimizda.component';
 
+
 import { AlakartComponent } from './alakart/alakart.component';
 import { AlakartMenuComponent } from './alakart-menu/alakart-menu.component';
 
@@ -25,6 +26,7 @@ import { EkipmanComponent } from './ekipmanlar/ekipman.component';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import {AppGlobalsService} from "./globals";
+import { MutfaklarComponent } from './mutfaklar/mutfaklar.component';
 
 
 export const config = {
@@ -63,7 +65,9 @@ export const config = {
     FooterBarComponent,
     EkipmanComponent,
 
-    MyHighLightDirective
+    MyHighLightDirective,
+
+    MutfaklarComponent
 
 
   ],

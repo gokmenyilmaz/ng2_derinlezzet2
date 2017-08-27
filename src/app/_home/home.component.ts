@@ -4,6 +4,7 @@ import { NavmenuComponent } from '../navmenu/navmenu.component';
 import { HakkimizdaComponent } from '../hakkimizda/hakkimizda.component';
 import { HaftalikMenuComponent } from '../haftalikmenu/haftalik-menu.component';
 import { EkipmanComponent } from '../ekipmanlar/ekipman.component';
+import { MutfaklarComponent} from '../mutfaklar/mutfaklar.component';
 
 
 @Component({
