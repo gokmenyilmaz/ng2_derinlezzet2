@@ -2,31 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import {MutfaklarService} from './mutfaklar.service'
 import {Mutfak} from '../_models/mutfak'
 import {YemekMenuItem} from '../_models/YemekMenuItem'
+import {AppGlobalsService} from "../globals";
 
 @Component({
   selector: 'mutfaklar',
+  moduleId: module.id,
   templateUrl: './mutfaklar.component.html',
   styleUrls: ['./mutfaklar.component.css'],
   providers:[MutfaklarService]
 })
-export class MutfaklarComponent implements OnInit {
+export class MutfaklarComponent {
 
-  _mutfak:any;
-  constructor(private mutfaklarService: MutfaklarService)
+  public _mutfak:Mutfak;
+
+  constructor(private mutfaklarService: MutfaklarService,public globalService:AppGlobalsService)
   { 
+     this._mutfak=new Mutfak(new Date(),"",0, "",[]);;
 
       var aktifTarih= new Date();
-      mutfaklarService.verileriGetir(aktifTarih).subscribe(c=>{
-        this._mutfak=c;
-
-        if (c.$exists() == false) {
-
-          var mutfak= new Mutfak(new Date(),"Çin Mutfağı",500, "Resim",[]);
-
-          mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii"));
-          mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii3333"));
-
-        }
+      mutfaklarService.verileriGetir(aktifTarih).subscribe(
+      data=>{
+        this._mutfak=data;
       })
 
   }
