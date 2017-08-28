@@ -28,6 +28,8 @@ import { FormsModule } from '@angular/forms';
 import {AppGlobalsService} from "./globals";
 import { MutfaklarComponent } from './mutfaklar/mutfaklar.component';
 
+import { LOCALE_ID } from '@angular/core';
+
 
 export const config = {
   apiKey: "AIzaSyDNmRF1JtItI0MiLhIjnJEN9nqboi4mWzM",
@@ -72,6 +74,10 @@ export const config = {
 
   ],
   bootstrap: [AppComponent],
-  providers:[AppGlobalsService]
+  providers:
+  [
+    AppGlobalsService,
+    { provide: LOCALE_ID, useValue: "tr-TR" }
+  ]
 })
 export class AppModule { }

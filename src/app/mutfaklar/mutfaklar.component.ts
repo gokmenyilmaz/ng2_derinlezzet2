@@ -37,11 +37,7 @@ export class MutfaklarComponent {
     
     this.mutfaklarService.kaydet(new Date(),this._mutfak);
 
-    // var mutfak= new Mutfak(new Date(),"Çin Mutfağı",500, "Resim",[]);
-    
-    // mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii"));
-    // mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii3333"));
-
+    this._isEditMode=false;
   }
 
   yeniSatirEkle()

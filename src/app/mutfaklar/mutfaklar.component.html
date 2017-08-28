@@ -4,28 +4,32 @@
         
         <div>
             <h3 *ngIf="_isEditMode" style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
-                <input placeholder="Mutfak Adı Başlık" type="text" [(ngModel)]="_mutfak.MenuAd"/> <br>
+                <input style="text-align:center" placeholder="Mutfak Adı Başlık" type="text" [(ngModel)]="_mutfak.MenuAd"/> <br>
             </h3>
 
             <h4 *ngIf="_isEditMode">
-                <input placeholder="Alt Başlık" type="text" [(ngModel)]="_mutfak.MenuAdAltBaslik" />
+                <input style="text-align:center" placeholder="Alt Başlık" type="text" [(ngModel)]="_mutfak.MenuAdAltBaslik" />
             </h4>
             
-            <h3 *ngIf="!_isEditMode" style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
+            <h3 *ngIf="!_isEditMode" style="font-weight: bold" class="w3-padding-6">
                {{_mutfak.MenuAd}}
             </h3>
 
-            <h4 *ngIf="!_isEditMode" style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
+            <h4 *ngIf="!_isEditMode" style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-6">
                {{_mutfak.MenuAdAltBaslik}}
             </h4>
         </div>
      
     </div>
     
-
+    
     <fieldset class="w3-display-container w3-card-2 w3-round  w3-center">
+       
         <section class="w3-container">
-                <h4 class="w3-black" style="margin:0 -20px">{{_mutfak.Tarih}}</h4>
+                <h4 *ngIf="!_isEditMode" class="w3-black" style="margin:0 -20px">{{_mutfak.Tarih| date:'yMMMMEEEEd'}}</h4>
+                <h4 *ngIf="_isEditMode" class="w3-black" style="margin:0 -20px">
+                    <input type="date" style="text-align:center" placeholder="Tarih"  [(ngModel)]="_mutfak.Tarih" />
+                </h4>
                         
                 <div class="secenekler" *ngIf="_isEditMode">
                     <div>
