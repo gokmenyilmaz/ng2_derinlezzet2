@@ -22,7 +22,7 @@ export class MutfaklarComponent {
 
   constructor(private mutfaklarService: MutfaklarService,public globalService:AppGlobalsService)
   { 
-     this._mutfak=new Mutfak(new Date(),"","",0, "",[],true,true,true);
+     this._mutfak=new Mutfak(new Date(),"","",0, "",[],true,true,true,"");
 
       var aktifTarih= new Date();
       mutfaklarService.verileriGetir(aktifTarih).subscribe(
@@ -65,6 +65,19 @@ export class MutfaklarComponent {
     
   }
 
+  changeListener($event) : void {
+    this.readThis($event.target);
+  }
+  
+  readThis(inputValue: any): void {
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this._mutfak.image = myReader.result;
+    }
+    myReader.readAsDataURL(file);
+  }
 
   ngOnInit() {
   }

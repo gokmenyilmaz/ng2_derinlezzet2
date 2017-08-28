@@ -11,7 +11,8 @@ export class Mutfak {
         public SatirFiyatGorunsunMu:boolean,
         public ToplamFiyatGorunsunMu:boolean,
       
-        public AnaSayfadaGorunsunMu:boolean
+        public AnaSayfadaGorunsunMu:boolean,
+        public image:string
 
     ) {}
 }
