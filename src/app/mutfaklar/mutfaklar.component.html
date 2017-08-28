@@ -1,14 +1,35 @@
-<div class=" w3-content w3-container w3-padding-32 w3-center">
+<div *ngIf="EkrandaGorunsunMu" class=" w3-content w3-container w3-padding-32 w3-center">
 
     <div  class="w3-container w3-padding-32 w3-center  w3-wide">
         <h3 style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
             ÇİN MUTFAĞI
         </h3>
 
+    </div>
+    
+    <section>
         <fieldset class="w3-display-container w3-card-2 w3-round  w3-center">
         
             <ul>
-                <li *ngFor="let item of _mutfak.YemekItems">{{item.YemekAdi}}</li>
+                <li *ngFor="let item of _mutfak.YemekItems">
+
+                    <div *ngIf="_isEditMode" style="display: flex;position: relative">
+                        <input style="display: inline-block;width: 100%" type="text" [(ngModel)]="item.YemekAdi" />
+                        <input *ngIf="FiyatlarGorunsunMu" style="display: inline-block;width: 60px" type="text" 
+                        [(ngModel)]="item.Fiyat"
+                        />
+                        <span title="Sil" (click)='satirSil(_mutfak,x)'>
+                            <i class="fa fa-times"></i>
+                        </span>
+                    </div>
+                    <div class="yemekMenuItem" *ngIf="!_isEditMode" style="display: flex;">
+                        <div [class.w3-center]="!FiyatlarGorunsunMu" style="display: inline-block;width: 100%;text-align: left">
+                            {{item.YemekAdi}}</div>
+                        <div *ngIf="FiyatlarGorunsunMu" class="yemekfiyat" style="display: inline-block;width: 60px">
+                            {{item.Fiyat}}
+                        </div>
+                    </div>
+                </li>
             </ul>
 
             <div class="fiyat w3-display-bottommiddle w3-block" style="padding-bottom:10px;" >
@@ -16,12 +37,15 @@
             </div>
 
         </fieldset>
-      
+
         <div *ngIf="!globalService._userInfo" style="text-align: center">
-            <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
-            <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
+                <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
+                <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
         </div>
-     </div>
+
+    </section>
+      
+   
 </div>
 
 

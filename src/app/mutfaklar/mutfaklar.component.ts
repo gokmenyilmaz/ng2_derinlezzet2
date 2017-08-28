@@ -14,6 +14,11 @@ import {AppGlobalsService} from "../globals";
 export class MutfaklarComponent {
 
   public _mutfak:Mutfak;
+  _isEditMode=true;
+  FiyatlarGorunsunMu=true;
+
+  EkrandaGorunsunMu:boolean=true;
+
 
   constructor(private mutfaklarService: MutfaklarService,public globalService:AppGlobalsService)
   { 
