@@ -14,7 +14,7 @@ import {AppGlobalsService} from "../globals";
 export class MutfaklarComponent {
 
   public _mutfak:Mutfak;
-  _isEditMode=true;
+  _isEditMode=false;
   FiyatlarGorunsunMu=true;
 
   EkrandaGorunsunMu:boolean=true;
@@ -22,7 +22,7 @@ export class MutfaklarComponent {
 
   constructor(private mutfaklarService: MutfaklarService,public globalService:AppGlobalsService)
   { 
-     this._mutfak=new Mutfak(new Date(),"",0, "",[]);;
+     this._mutfak=new Mutfak(new Date(),"","",0, "",[],true,true,true);
 
       var aktifTarih= new Date();
       mutfaklarService.verileriGetir(aktifTarih).subscribe(
@@ -34,14 +34,41 @@ export class MutfaklarComponent {
 
   kaydet()
   {
-
-    var mutfak= new Mutfak(new Date(),"Çin Mutfağı",500, "Resim",[]);
     
-    mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii"));
-    mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii3333"));
+    this.mutfaklarService.kaydet(new Date(),this._mutfak);
 
-    this.mutfaklarService.kaydet(new Date(),mutfak);
+    // var mutfak= new Mutfak(new Date(),"Çin Mutfağı",500, "Resim",[]);
+    
+    // mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii"));
+    // mutfak.YemekItems.push(new YemekMenuItem("0", "yeniii3333"));
+
   }
+
+  yeniSatirEkle()
+  {
+      let _yeniYemekMenuItem=new YemekMenuItem("0", "")
+      this._mutfak.YemekItems.push(_yeniYemekMenuItem);
+  }
+
+
+  satirSil(item:YemekMenuItem)
+  {
+      this.removeFromArray(item);
+  }
+
+  duzenle()
+  {
+    this._isEditMode=!this._isEditMode;
+  }
+
+  removeFromArray(value:any) {
+      var idx = this._mutfak.YemekItems.indexOf(value);
+      if (idx !== -1) {
+        this._mutfak.YemekItems.splice(idx, 1);
+      }
+    
+  }
+
 
   ngOnInit() {
   }

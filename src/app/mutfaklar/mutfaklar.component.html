@@ -1,51 +1,99 @@
-<div *ngIf="EkrandaGorunsunMu" class=" w3-content w3-container w3-padding-32 w3-center">
+<div *ngIf="_mutfak.AnaSayfadaGorunsunMu || !globalService._userInfo" class=" w3-content w3-container w3-padding-32 w3-center">
 
     <div  class="w3-container w3-padding-32 w3-center  w3-wide">
-        <h3 style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
-            ÇİN MUTFAĞI
-        </h3>
+        
+        <div>
+            <h3 *ngIf="_isEditMode" style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
+                <input placeholder="Mutfak Adı Başlık" type="text" [(ngModel)]="_mutfak.MenuAd"/> <br>
+            </h3>
 
+            <h4 *ngIf="_isEditMode">
+                <input placeholder="Alt Başlık" type="text" [(ngModel)]="_mutfak.MenuAdAltBaslik" />
+            </h4>
+            
+            <h3 *ngIf="!_isEditMode" style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
+               {{_mutfak.MenuAd}}
+            </h3>
+
+            <h4 *ngIf="!_isEditMode" style="font-weight: bold" class="w3-border-bottom w3-border-light-grey w3-padding-12">
+               {{_mutfak.MenuAdAltBaslik}}
+            </h4>
+        </div>
+     
     </div>
     
-    <section>
-        <fieldset class="w3-display-container w3-card-2 w3-round  w3-center">
-        
-            <ul>
-                <li *ngFor="let item of _mutfak.YemekItems">
 
-                    <div *ngIf="_isEditMode" style="display: flex;position: relative">
-                        <input style="display: inline-block;width: 100%" type="text" [(ngModel)]="item.YemekAdi" />
-                        <input *ngIf="FiyatlarGorunsunMu" style="display: inline-block;width: 60px" type="text" 
-                        [(ngModel)]="item.Fiyat"
-                        />
-                        <span title="Sil" (click)='satirSil(_mutfak,x)'>
-                            <i class="fa fa-times"></i>
+    <fieldset class="w3-display-container w3-card-2 w3-round  w3-center">
+        <section class="w3-container">
+                <h4 class="w3-black" style="margin:0 -20px">{{_mutfak.Tarih}}</h4>
+                        
+                <div class="secenekler" *ngIf="_isEditMode">
+                    <div>
+                    <label><input type="checkbox" [(ngModel)]="_mutfak.AnaSayfadaGorunsunMu" 
+                        name="checkbox" value="value">Sitede Görünsün Mü?</label>
+                    </div>
+                    
+                    <div>
+                        <label><input type="checkbox" [(ngModel)]="_mutfak.SatirFiyatGorunsunMu" name="checkbox" value="value">Fiyatlar Görünsün Mü?</label>
+                    </div>
+                    <div>
+                        <label><input type="checkbox" [(ngModel)]="_mutfak.ToplamFiyatGorunsunMu" name="checkbox" value="value">Toplam Fiyat Görünsün Mü?</label>
+                    </div>
+    
+                    <div>
+                        <span class="w3-btn w3-teal" style="font-size: 12px" (click)="yeniSatirEkle(menu_gun)">
+                            + Satır Ekle
                         </span>
                     </div>
-                    <div class="yemekMenuItem" *ngIf="!_isEditMode" style="display: flex;">
-                        <div [class.w3-center]="!FiyatlarGorunsunMu" style="display: inline-block;width: 100%;text-align: left">
-                            {{item.YemekAdi}}</div>
-                        <div *ngIf="FiyatlarGorunsunMu" class="yemekfiyat" style="display: inline-block;width: 60px">
-                            {{item.Fiyat}}
-                        </div>
+
+
+                </div>
+                    
+        </section>
+        
+        <hr>
+    
+        <ul>
+            <li *ngFor="let item of _mutfak.YemekItems">
+
+                <div *ngIf="_isEditMode" style="display: flex;position: relative">
+                    <input style="display: inline-block;width: 100%" type="text" [(ngModel)]="item.YemekAdi" />
+                    <input *ngIf="_mutfak.SatirFiyatGorunsunMu" style="display: inline-block;width: 60px" type="text" 
+                    [(ngModel)]="item.Fiyat"
+                    />
+                    <span title="Sil" (click)='satirSil(item)'>
+                        <i class="fa fa-times"></i>
+                    </span>
+                </div>
+                <div class="yemekMenuItem" *ngIf="!_isEditMode" style="display: flex;">
+                    <div [class.w3-center]="!_mutfak.SatirFiyatGorunsunMu" style="display: inline-block;width: 100%;text-align: left">
+                        {{item.YemekAdi}}</div>
+                    <div *ngIf="_mutfak.SatirFiyatGorunsunMu" class="yemekfiyat" style="display: inline-block;width: 60px">
+                        {{item.Fiyat}}
                     </div>
-                </li>
-            </ul>
+                </div>
+            </li>
+        </ul>
 
-            <div class="fiyat w3-display-bottommiddle w3-block" style="padding-bottom:10px;" >
-                    Toplam : <strong style="font-size:1.1rem">{{_mutfak.ToplamFiyat}}</strong>
-            </div>
-
-        </fieldset>
-
-        <div *ngIf="!globalService._userInfo" style="text-align: center">
-                <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
-                <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
+        <div *ngIf="_isEditMode && _mutfak.ToplamFiyatGorunsunMu">
+                Toplam : <input type="text" [(ngModel)]="_mutfak.ToplamFiyat" />
         </div>
 
-    </section>
-      
-   
+        <div class="fiyat w3-display-bottommiddle w3-block" style="padding-bottom:10px;" 
+        *ngIf="!_isEditMode && _mutfak.ToplamFiyatGorunsunMu">
+            Toplam : <strong style="font-size:1.1rem">{{_mutfak.ToplamFiyat}}</strong>
+        </div>
+
+    </fieldset>
+
+
+    <!-- todo sonra kaldır -->
+    <div *ngIf="!globalService._userInfo" style="text-align: center">
+            <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
+            <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
+    </div>
+
+ 
 </div>
 
 
