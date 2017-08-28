@@ -18,6 +18,7 @@ export class AppGlobalsService {
 
   public _userInfo:UserInfo;
   public user:BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>(this._userInfo);
+  public userPhotoURL="";
 
   constructor(private afAuth: AngularFireAuth) {  }
 
@@ -25,9 +26,13 @@ export class AppGlobalsService {
     this.afAuth.auth
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(userdata=>{
+
+       
           
           this._userInfo=userdata.user;
-          this.user.next(this._userInfo);
+          this.userPhotoURL= userdata.additionalUserInfo.profile.picture.data.url;
+          
+         
       })
       .catch(hata=>{
           console.log(hata);
