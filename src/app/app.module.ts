@@ -26,7 +26,6 @@ import { EkipmanComponent } from './ekipmanlar/ekipman.component';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import {AppGlobalsService} from "./globals";
-import { MutfaklarComponent } from './mutfaklar/mutfaklar.component';
 
 import { LOCALE_ID } from '@angular/core';
 
