@@ -4,8 +4,7 @@ import { NavmenuComponent } from '../navmenu/navmenu.component';
 import { HakkimizdaComponent } from '../hakkimizda/hakkimizda.component';
 import { HaftalikMenuComponent } from '../haftalikmenu/haftalik-menu.component';
 import { EkipmanComponent } from '../ekipmanlar/ekipman.component';
-import { MutfaklarComponent} from '../mutfaklar/mutfaklar.component';
-
+import {AppGlobalsService} from "../globals";
 
 @Component({
     moduleId: module.id,
@@ -16,7 +15,7 @@ import { MutfaklarComponent} from '../mutfaklar/mutfaklar.component';
 })
 export class HomeComponent implements OnInit {
 
-    constructor() {
+    constructor(public globalService:AppGlobalsService) {
     }
 
     ngOnInit() {

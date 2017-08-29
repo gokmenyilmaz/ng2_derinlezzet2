@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input,OnInit,ElementRef,AfterViewInit,ViewChild } from '@angular/core';
 import { HaftalikMenuService } from './haftalik-menu.service'
 import {AppGlobalsService} from "../globals";
 
@@ -18,8 +18,15 @@ import {UserInfo}  from 'firebase';
     providers: [HaftalikMenuService]
 })
 
-
 export class HaftalikMenuComponent {
+    @Input() MenuAd:string;
+    @Input() AnaBaslik:string;
+
+    @ViewChild('modal02') modalForm: ElementRef;
+
+    aktifResimYol:string="";
+    aktifResimAciklama:string="";
+
     readonly MAX_YEMEKGUN_SAYISI: number=7;
 
     readonly gunler = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
@@ -37,12 +44,16 @@ export class HaftalikMenuComponent {
 
      _isEditMode:boolean=false;
 
+  
     constructor(private haftalikMenuService: HaftalikMenuService,public globalService:AppGlobalsService) {
-        this.varsayilanTarihAyarla(new Date());
+    }
+
+    ngOnInit()
+    {
+       this.varsayilanTarihAyarla(new Date());
         this.haftalikMenuleriYukle();
     }
 
-    
     varsayilanTarihAyarla(d:Date) {
         this.yil = d.getFullYear();
         this.ay_onikili = d.getMonth() + 1;
@@ -82,7 +93,8 @@ export class HaftalikMenuComponent {
 
         if (this.pazartesiKey == -1) return;
 
-        this.haftalikMenuService.haftaVerileriniGetir(this.yil, this.ay_onikili, this.pazartesiKey).subscribe(data => {
+        this.haftalikMenuService.haftaVerileriniGetir(this.MenuAd,this.yil, this.ay_onikili, this.pazartesiKey)
+        .subscribe(data => {
             this.YemekMenuGunListe = data;
             if (data.$exists() == false) {
                 this.setBosYemekMenuItems();
@@ -106,7 +118,7 @@ export class HaftalikMenuComponent {
             let tarih = new Date();
             tarih.setFullYear(this.yil, this.ay_onikili - 1, this.pazartesiKey + g);
 
-            let gun = new YemekMenuGun(tarih.toLocaleDateString(), this.gunler[tarih.getDay() - 1],false,true,0, []);
+            let gun = new YemekMenuGun(tarih, this.gunler[tarih.getDay() - 1],false,true,0, [],"","","");
 
             for (let i = 0; i < 5; i++) {
                 gun.YemekMenuItems.push(new YemekMenuItem("0", ""));
@@ -115,7 +127,6 @@ export class HaftalikMenuComponent {
             this.YemekMenuGunListe.push(gun);
         }
     }
-
 
     getAyPazartesiler(_yil: number, _ay_onikili: number) {
         let _ay = _ay_onikili - 1;
@@ -153,13 +164,41 @@ export class HaftalikMenuComponent {
         return m.YemekMenuItems;
     }
 
+
+    changeListener($event,m:YemekMenuGun) : void {
+        this.readThis($event.target,m);
+    }
+      
+    readThis(inputValue: any,m:YemekMenuGun): void {
+        var file:File = inputValue.files[0];
+        var myReader:FileReader = new FileReader();
+      
+        myReader.onloadend = (e) => {
+          m.image = myReader.result;
+        }
+        myReader.readAsDataURL(file);
+    }
+  
     duzenle(){
         this._isEditMode=true;
     }
 
     kaydet() {
-        this.haftalikMenuService.haftaVeriKaydet(this.yil, this.ay_onikili, this.pazartesiKey, this.YemekMenuGunListe);
+        this.haftalikMenuService.haftaVeriKaydet(this.MenuAd,this.yil, this.ay_onikili, this.pazartesiKey, this.YemekMenuGunListe);
         this._isEditMode=false;
+    }
+
+
+    resmiBuyut(m:YemekMenuGun)
+    {
+        this.aktifResimYol=m.image;
+        this.aktifResimAciklama=m.Aciklama;
+        this.modalForm.nativeElement.style.display = "block";
+    }
+
+    closeModal() {
+        this.modalForm.nativeElement.style.display = "none";
+
     }
 
 }

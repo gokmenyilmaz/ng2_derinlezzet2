@@ -68,10 +68,6 @@ export const config = {
     EkipmanComponent,
 
     MyHighLightDirective,
-
-    MutfaklarComponent
-
-
   ],
   bootstrap: [AppComponent],
   providers:
