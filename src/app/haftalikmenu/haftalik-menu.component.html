@@ -41,8 +41,9 @@
     </div>
 
     <div style="display: flex; flex-wrap: wrap;justify-content:space-around;">
-       <article class="w3-col l2 m5 s12 "  *ngFor='let menu_gun of YemekMenuGunListe;let i = index'>
-        <fieldset *ngIf="menu_gun.ToplamFiyat!=0 || globalService._userInfo" class="w3-display-container w3-card-2 w3-round  w3-center">
+       <ng-container  *ngFor='let menu_gun of YemekMenuGunListe;let i = index'>
+        <fieldset *ngIf="menu_gun.ToplamFiyat!=0 || globalService._userInfo" 
+                    class="w3-col l4 s12  w3-card-2 w3-round  w3-center">
             <div>
                 <h4 class="w3-black" style="margin:0 -10px">{{menu_gun.GunAd}}</h4>
                 <!-- <span class="ng-binding">{{menu_gun.Tarih | date:'yMMMMEEEEd'}}</span> -->
@@ -103,7 +104,7 @@
                 Toplam : <strong style="font-size:1.1rem">{{menu_gun.ToplamFiyat}}</strong>
             </div>
         </fieldset>
-       </article>
+       </ng-container>
     </div>
 
 </div>
