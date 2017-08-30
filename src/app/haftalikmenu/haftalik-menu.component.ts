@@ -201,4 +201,20 @@ export class HaftalikMenuComponent {
 
     }
 
+    sutunSitilSinifGetir()
+    {
+        var sinifDizi=[];
+        var fiyatGiriliSayi= this.YemekMenuGunListe.filter(c=>c.ToplamFiyat!=0).length;
+       
+       if(fiyatGiriliSayi==1 || fiyatGiriliSayi==2) sinifDizi.push("l6");
+       if(fiyatGiriliSayi==3) sinifDizi.push("l4");
+       if(fiyatGiriliSayi==4) sinifDizi.push("l3");
+       if(fiyatGiriliSayi==5) sinifDizi.push("l2");
+
+       return sinifDizi;
+    
+
+
+    }
+
 }
