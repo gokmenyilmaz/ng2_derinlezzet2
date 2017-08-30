@@ -1,3 +1,6 @@
+her çarşamba dünya mutfağı
+her perşembe vegan mutfağı menüleri sunulmaktadır.
+
 # Derin Lezzet Tanıtım  Sitesi
 
 # Deploy paketi
