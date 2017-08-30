@@ -180,7 +180,7 @@ export class HaftalikMenuComponent {
     }
   
     duzenle(){
-        this._isEditMode=true;
+        this._isEditMode= !this._isEditMode;
     }
 
     kaydet() {
