@@ -19,6 +19,10 @@
             {{AnaBaslik}}</h3>
     </header>
 
+    <p *ngIf="!aktifHaftaVerisiVarmi">
+        Bu hafta için herhangi bir menü tanımı yapılmadı.
+    </p>
+
     <section *ngIf="globalService._userInfo"  style="text-align: center">
             <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
             <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>

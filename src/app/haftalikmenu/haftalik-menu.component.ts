@@ -27,6 +27,8 @@ export class HaftalikMenuComponent {
     aktifResimYol:string="";
     aktifResimAciklama:string="";
 
+    aktifHaftaVerisiVarmi:boolean;
+
     readonly MAX_YEMEKGUN_SAYISI: number=7;
 
     readonly gunler = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
@@ -96,6 +98,8 @@ export class HaftalikMenuComponent {
         this.haftalikMenuService.haftaVerileriniGetir(this.MenuAd,this.yil, this.ay_onikili, this.pazartesiKey)
         .subscribe(data => {
             this.YemekMenuGunListe = data;
+            this.aktifHaftaVerisiVarmi= this.YemekMenuGunListe.filter(c=>c.ToplamFiyat!=0).length>0;
+
             if (data.$exists() == false) {
                 this.setBosYemekMenuItems();
             }
