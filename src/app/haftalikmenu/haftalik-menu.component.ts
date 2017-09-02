@@ -97,12 +97,16 @@ export class HaftalikMenuComponent {
 
         this.haftalikMenuService.haftaVerileriniGetir(this.MenuAd,this.yil, this.ay_onikili, this.pazartesiKey)
         .subscribe(data => {
-            this.YemekMenuGunListe = data;
-            this.aktifHaftaVerisiVarmi= this.YemekMenuGunListe.filter(c=>c.ToplamFiyat!=0).length>0;
 
             if (data.$exists() == false) {
                 this.setBosYemekMenuItems();
+                return;
             }
+
+            this.YemekMenuGunListe = data;
+            this.aktifHaftaVerisiVarmi= this.YemekMenuGunListe.filter(c=>c.ToplamFiyat!=0).length>0;
+
+           
         });
     }
 
