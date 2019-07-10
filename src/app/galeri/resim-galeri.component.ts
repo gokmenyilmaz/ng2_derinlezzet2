@@ -1,6 +1,5 @@
 import { Component, ViewChild, Input, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { ResimGaleriService } from './resim-galeri.service'
-import 'rxjs/add/operator/map'
 import { Observer } from 'rxjs';
 export class FigureItem {
     constructor(
@@ -48,12 +47,12 @@ export class ResimGaleriComponent implements OnInit {
         this.FigureList = [];
 
 
-        this.resimGaleriService.resimleriGetir("/ResimGaleri/Genel")
-        .subscribe(data => {
-            this.FigureList = data;
-            this.FigureList.map(c=>{c.ResimYol=c.ResimYol.replace("/gorseller/","/gorseller/thumb/").replace("assets","./assets");return c;});
+        // this.resimGaleriService.resimleriGetir("/ResimGaleri/Genel")
+        // .subscribe(data => {
+        //     this.FigureList = data;
+        //     this.FigureList.map(c=>{c.ResimYol=c.ResimYol.replace("/gorseller/","/gorseller/thumb/").replace("assets","./assets");return c;});
 
-        });
+        // });
     }
 
 

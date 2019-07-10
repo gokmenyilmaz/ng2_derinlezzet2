@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Observable,BehaviorSubject} from 'rxjs';
-import 'rxjs/add/operator/share';
-import 'rxjs/add/operator/startWith';
 import {User} from "./_models/User";
 import {UserInfo}  from 'firebase';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
@@ -24,10 +22,8 @@ export class AppGlobalsService {
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(userdata=>{
 
-       
-          
           this._userInfo=userdata.user;
-          this.userPhotoURL= userdata.additionalUserInfo.profile.picture.data.url;
+          // this.userPhotoURL= userdata.additionalUserInfo.profile.picture.data.url;
           
          
       })

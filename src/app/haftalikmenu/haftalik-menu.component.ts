@@ -102,19 +102,19 @@ export class HaftalikMenuComponent {
 
         if (this.pazartesiKey == -1) return;
 
-        this.haftalikMenuService.haftaVerileriniGetir(this.MenuAd,this.yil, this.ay_onikili, this.pazartesiKey)
-        .subscribe(data => {
+        // this.haftalikMenuService.haftaVerileriniGetir(this.MenuAd,this.yil, this.ay_onikili, this.pazartesiKey)
+        // .subscribe(data => {
 
-            if (data.$exists() == false) {
-                this.setBosYemekMenuItems();
-                return;
-            }
+        //     if (data.$exists() == false) {
+        //         this.setBosYemekMenuItems();
+        //         return;
+        //     }
 
-            this.YemekMenuGunListe = data;
-            this.aktifHaftaVerisiVarmi= this.YemekMenuGunListe.filter(c=>c.ToplamFiyat!=0).length>0;
+        //     this.YemekMenuGunListe = data;
+        //     this.aktifHaftaVerisiVarmi= this.YemekMenuGunListe.filter(c=>c.ToplamFiyat!=0).length>0;
 
            
-        });
+        // });
     }
 
 
@@ -185,13 +185,13 @@ export class HaftalikMenuComponent {
     }
       
     readThis(inputValue: any,m:YemekMenuGun): void {
-        var file:File = inputValue.files[0];
-        var myReader:FileReader = new FileReader();
+        // var file:File = inputValue.files[0];
+        // var myReader:FileReader = new FileReader();
       
-        myReader.onloadend = (e) => {
-          m.image = myReader.result;
-        }
-        myReader.readAsDataURL(file);
+        // myReader.onloadend = (e) => {
+        //   m.image = myReader.result;
+        // }
+        // myReader.readAsDataURL(file);
     }
   
     duzenle(){
