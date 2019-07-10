@@ -1,7 +1,7 @@
 import { Component, ViewChild, Input, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { ResimGaleriService } from './resim-galeri.service'
 import 'rxjs/add/operator/map'
-import { Observer } from 'rxjs/Observer';
+import { Observer } from 'rxjs';
 export class FigureItem {
     constructor(
         public Baslik: string,
@@ -30,7 +30,7 @@ export class ResimGaleriComponent implements OnInit {
 
     aktiveImageIndex: number = 0;
 
-    @ViewChild('modal01') modalForm: ElementRef;
+    @ViewChild('modal01', {static: false}) modalForm: ElementRef;
 
     constructor(private resimGaleriService: ResimGaleriService) {
 

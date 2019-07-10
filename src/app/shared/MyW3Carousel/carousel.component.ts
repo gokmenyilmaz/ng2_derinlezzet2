@@ -16,8 +16,8 @@ export class MyW3CarouselComponent implements OnInit {
 
     @Input() saniye: number;
     @Input() buttons: string;
-    @ViewChild('dataContainer') dataContainer: ElementRef;
-    @ViewChild('dotContainer') dotContainer: ElementRef;
+    @ViewChild('dataContainer', {static: false}) dataContainer: ElementRef;
+    @ViewChild('dotContainer', {static: false}) dotContainer: ElementRef;
 
 
     displayItems: any[] = [];

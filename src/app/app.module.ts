@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { SharedModule, MyW3CarouselComponent, MyTabComponent,MyHighLightDirective } from './shared/index';
 
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import {AppGlobalsService} from "./globals";
 
 import { LOCALE_ID } from '@angular/core';
+
 
 
 export const config = {

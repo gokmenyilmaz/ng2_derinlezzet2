@@ -19,7 +19,7 @@ export class AlakartComponent implements OnInit {
     alakartMenus: AlakartMenu[] = [];
     _isEditMode: boolean = false;
 
-    @ViewChild(AlakartMenuComponent)
+    @ViewChild(AlakartMenuComponent,{static: false})
     private altMenuComponent: AlakartMenu;
 
 

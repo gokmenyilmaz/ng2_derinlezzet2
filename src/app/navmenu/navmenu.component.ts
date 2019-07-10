@@ -13,8 +13,9 @@ export class NavmenuComponent {
 
     public userPhoto:string;
 
-    @ViewChild('smallMenu') smallMenu: ElementRef;
+    @ViewChild('smallMenu', {static: false}) smallMenu: ElementRef;
 
+ 
     constructor(public globalService:AppGlobalsService)
     {
       

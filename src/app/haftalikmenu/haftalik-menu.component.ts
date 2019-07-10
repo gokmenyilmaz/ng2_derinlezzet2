@@ -22,7 +22,7 @@ export class HaftalikMenuComponent {
     @Input() MenuAd:string;
     @Input() AnaBaslik:string;
 
-    @ViewChild('modal02') modalForm: ElementRef;
+    @ViewChild('modal02',{static: false}) modalForm: ElementRef;
 
     aktifResimYol:string="";
     aktifResimAciklama:string="";

@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable,BehaviorSubject} from 'rxjs';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/startWith';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {User} from "./_models/User";
 import {UserInfo}  from 'firebase';
-
-
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
-import { FirebaseListObservable,FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 
 
