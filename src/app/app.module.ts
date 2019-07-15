@@ -14,7 +14,7 @@ import { HakkimizdaComponent } from './hakkimizda/hakkimizda.component';
 
 
 import { AlakartComponent } from './alakart/alakart.component';
-import { AlakartMenuComponent } from './alakart-menu/alakart-menu.component';
+import { AlakartMenuComponent } from './alakart/alakart-menu/alakart-menu.component';
 
 import { HaftalikMenuComponent } from './haftalikmenu/haftalik-menu.component';
 import { ResimGaleriComponent } from './galeri/resim-galeri.component';

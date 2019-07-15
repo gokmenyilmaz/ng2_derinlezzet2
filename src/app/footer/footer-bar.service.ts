@@ -12,7 +12,7 @@ export class FooterBarService {
     constructor(private afDb: AngularFireDatabase) {}
     footerDataGetir() {
         var yol = `/Firma`;
-        return this.afDb.object(yol);
+        return this.afDb.object<any>(yol);
     }
 
     kaydet(data:any) {

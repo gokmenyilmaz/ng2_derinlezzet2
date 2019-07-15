@@ -1,6 +1,6 @@
 import { Component, ViewChild, Input,Output,EventEmitter , OnInit, ElementRef, AfterViewInit } from '@angular/core';
-import {AlakartMenu} from '../_models/AlakartMenu';
-import {AlakartMenuItem} from '../_models/AlakartMenuItem';
+import {AlakartMenu} from '../../_models/AlakartMenu';
+import {AlakartMenuItem} from '../../_models/AlakartMenuItem';
 
 @Component({
     moduleId: module.id,

@@ -14,7 +14,7 @@ export class AlakartService {
     alakartVerileriniGetir() {
 
         var yol = `/AlakartMenu`;
-        return this.afDb.object(yol);
+        return this.afDb.list<AlakartMenu>(yol);
     }
 
     alakartVeriKaydet(data:AlakartMenu[] ) {

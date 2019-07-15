@@ -47,12 +47,13 @@ export class ResimGaleriComponent implements OnInit {
         this.FigureList = [];
 
 
-        // this.resimGaleriService.resimleriGetir("/ResimGaleri/Genel")
-        // .subscribe(data => {
-        //     this.FigureList = data;
-        //     this.FigureList.map(c=>{c.ResimYol=c.ResimYol.replace("/gorseller/","/gorseller/thumb/").replace("assets","./assets");return c;});
+        this.resimGaleriService.resimleriGetir("/ResimGaleri/Genel")
+        .valueChanges()
+        .subscribe(data => {
+            this.FigureList = data;
+            this.FigureList.map(c=>{c.ResimYol=c.ResimYol.replace("/gorseller/","/gorseller/thumb/").replace("assets","./assets");return c;});
 
-        // });
+        });
     }
 
 

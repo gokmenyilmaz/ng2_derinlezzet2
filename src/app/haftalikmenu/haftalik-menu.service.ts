@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { YemekMenuGun } from '../_models/YemekMenuGun';
 
 
 
@@ -13,7 +14,7 @@ export class HaftalikMenuService {
     haftaVerileriniGetir(_menuAd:string,_yil: number, _ay: number, _pazartesiKey: number) {
 
         var yol = `/${_menuAd}/${_yil}/${_ay}/${_pazartesiKey}`;
-        return this.afDb.object(yol);
+        return this.afDb.list<YemekMenuGun>(yol);
     }
 
     haftaVeriKaydet(_menuAd:string,_yil: number, _ay: number, _pazartesiKey: number, _haftaData: any) {

@@ -12,7 +12,7 @@ export class IstatistikBarService {
 
     istatistikGetir(ref: string) {
         var yol = ref;
-        return this.afDb.object(yol);
+        return this.afDb.object<any>(yol);
     }
 
     kaydet(ref: string, istatistik: any) {

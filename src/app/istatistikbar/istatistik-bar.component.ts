@@ -37,16 +37,13 @@ export class IstatistikBarComponent implements OnInit {
 
     yukle() {
 
-        // this.istatistikBarService.istatistikGetir("/Istatistik").subscribe(data => {
-
-
-        //     this.istatistik.MenuCesitSayisi = data.MenuCesitSayisi;
-        //     this.istatistik.MusteriSayisi = data.MusteriSayisi;
-        //     this.istatistik.UlkeMutfakSayisi = data.UlkeMutfakSayisi;
-
-
-
-        // });
+        this.istatistikBarService.istatistikGetir("/Istatistik")
+        .valueChanges()
+        .subscribe(data => {
+            this.istatistik.MenuCesitSayisi = data.MenuCesitSayisi;
+            this.istatistik.MusteriSayisi = data.MusteriSayisi;
+            this.istatistik.UlkeMutfakSayisi = data.UlkeMutfakSayisi;
+        });
     }
 
 

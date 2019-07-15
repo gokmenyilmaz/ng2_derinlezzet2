@@ -27,19 +27,21 @@ export class FooterBarComponent {
     {
         this.setFirmaDefault();
         
-        // footerBarService.footerDataGetir().subscribe(data=>{
-        //     if(data.$exists()){
+        footerBarService.footerDataGetir()
+        .valueChanges()
+        .subscribe(data=>{
+            if(data.$exists()){
               
-        //         this._firma=data;  
-        //         this.loadMap();
-        //     }
-        //     else {
-        //         this.setFirmaDefault();
-        //     }
+                this._firma=data;  
+                this.loadMap();
+            }
+            else {
+                this.setFirmaDefault();
+            }
 
            
            
-        // });
+        });
 
     }
 

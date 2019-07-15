@@ -4,7 +4,7 @@ import { AlakartMenu } from '../_models/AlakartMenu';
 import { AlakartMenuItem } from '../_models/AlakartMenuItem';
 import { AppGlobalsService } from "../globals";
 import { User } from "../_models/User";
-import { AlakartMenuComponent } from '../alakart-menu/alakart-menu.component'
+import { AlakartMenuComponent } from './alakart-menu/alakart-menu.component'
 import { Observable } from 'rxjs';
 
 
@@ -19,7 +19,9 @@ export class AlakartComponent implements OnInit {
 
     _isEditMode: boolean = false;
 
-    alakartMenus: Observable<any>;
+   
+
+    alakartMenus: AlakartMenu[] = [];
 
     @ViewChild(AlakartMenuComponent,{static: false})
     private altMenuComponent: AlakartMenu;
@@ -42,17 +44,20 @@ export class AlakartComponent implements OnInit {
 
     ngOnInit() {
 
-        this.alakartMenus=this.alakartService.alakartVerileriniGetir().valueChanges();
+        this.alakartService.alakartVerileriniGetir()
+        .valueChanges()
+        .subscribe (data => {
 
-        // (data => {
-        //     if (data.$exists()) {
-        //         this.alakartMenus = data;
-        //     }
-        //     else {
-        //         this.setBosAlakartMenus();
-        //     }
-
-        // });
+            
+            this.alakartMenus = data;
+                // if (data.$exists()) {
+                //     this.alakartMenus = data;
+                // }
+                // else {
+                //     this.setBosAlakartMenus();
+                // }
+    
+            });
 
     }
 
