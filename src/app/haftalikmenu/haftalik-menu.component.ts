@@ -136,7 +136,7 @@ export class HaftalikMenuComponent {
             let tarih = new Date();
             tarih.setFullYear(this.yil, this.ay_onikili - 1, this.pazartesiKey + g);
 
-            let gun = new YemekMenuGun(tarih.toLocaleDateString("tr-TR"), this.gunler[tarih.getDay() - 1],false,true,0, [],"","","");
+            let gun = new YemekMenuGun(tarih.toLocaleDateString("tr-TR"), this.gunler[tarih.getDay() - 1],false,true,0, [],"","","",[]);
 
             for (let i = 0; i < 5; i++) {
                 gun.YemekMenuItems.push(new YemekMenuItem("0", ""));
@@ -168,6 +168,13 @@ export class HaftalikMenuComponent {
         let _yeniYemekMenuItem=new YemekMenuItem("0", "")
         m.YemekMenuItems.push(_yeniYemekMenuItem);
     }
+
+    yeniSalataSatirEkle(m:YemekMenuGun)
+    {
+        let _yeniYemekMenuItem=new YemekMenuItem("0", "")
+        m.SalataMenuItems.push(_yeniYemekMenuItem);
+    }
+
 
     satirSil(m:YemekMenuGun,i:YemekMenuItem)
     {

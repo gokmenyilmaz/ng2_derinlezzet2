@@ -24,8 +24,8 @@
                 />
                 <textarea placeholder="Açıklama" style="display: inline-block;width: 80%" [(ngModel)]='item.Aciklama1' rows="2"></textarea>
 
-                <span title="Sil" (click)='satirSil(_alakartMenu.AlakartMenuItems,item)' (mouseenter)='delHovering=true' (mouseleave)='delHovering=false'
-                    [class.hover-delete]='delHovering' class="delSpan" *ngIf="item.hovering==i">
+                <span title="Sil" (click)='satirSil(_alakartMenu.AlakartMenuItems,item)'  
+                     class="delSpan" *ngIf="item.hovering==i">
                     <i class="fa fa-times"></i>
             </span>
             </div>
