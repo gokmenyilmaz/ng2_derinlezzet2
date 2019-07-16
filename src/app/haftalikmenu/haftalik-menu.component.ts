@@ -107,13 +107,16 @@ export class HaftalikMenuComponent {
         .valueChanges()
         .subscribe(data => {
 
-            // if (data.$exists() == false) {
-            //     this.setBosYemekMenuItems();
-            //     return;
-            // }
+            if (data.length==0) {
+                this.setBosYemekMenuItems();
+                return;
+            }
 
+            console.log(data)
            
             this.YemekMenuGunListe = data;
+            
+
             this.aktifHaftaVerisiVarmi= this.YemekMenuGunListe.filter(c=>c.ToplamFiyat!=0).length>0;
 
            
@@ -136,7 +139,7 @@ export class HaftalikMenuComponent {
             let tarih = new Date();
             tarih.setFullYear(this.yil, this.ay_onikili - 1, this.pazartesiKey + g);
 
-            let gun = new YemekMenuGun(tarih.toLocaleDateString("tr-TR"), this.gunler[tarih.getDay() - 1],false,true,0, [],"","","",[]);
+            let gun = new YemekMenuGun(tarih.toLocaleDateString("tr-TR"), this.gunler[tarih.getDay() - 1],false,true,0, [],"","","",[],20);
 
             for (let i = 0; i < 5; i++) {
                 gun.YemekMenuItems.push(new YemekMenuItem("0", ""));

@@ -13,7 +13,8 @@ export class YemekMenuGun {
         public image:string,
 
         public Aciklama:string,
-        public SalataMenuItems: YemekMenuItem[]
+        public SalataMenuItems: YemekMenuItem[],
+        public ToplamFiyatSalata:number
 
     ) {
     }

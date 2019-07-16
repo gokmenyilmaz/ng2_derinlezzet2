@@ -65,7 +65,7 @@
                 </ul>
     
                 <ul *ngIf="menu_gun.SalataMenuItems" class="gunSutun" style="margin-left: 15px" >
-                    <div  style="display: inline-block;width: 100%;text-align: left;font-weight: bold">
+                    <div  style="display: inline-block;width: 100%;text-align: center;font-weight: bold">
                                 ZEYTİNYAĞLILAR</div>
                     <li *ngFor="let x of menu_gun.SalataMenuItems;let i=index">
                         <div class="yemekMenuItem" style="display: flex;">
@@ -76,7 +76,7 @@
                     </li>
 
                     <div  class="fiyat" style="padding-bottom:10px;padding-top:20px" >
-                        4.Çeşit : <strong style="font-size:1.1rem">20</strong>
+                        4.Çeşit : <strong style="font-size:1.1rem">{{menu_gun.ToplamFiyatSalata}}</strong>
                     </div>
 
                   
@@ -172,8 +172,7 @@
                         <li *ngFor="let x of menu_gun.SalataMenuItems;let i=index" (mouseleave)="x.hovering=null" (mouseenter)="x.hovering=i">
                             <div  style="display: flex;position: relative">
                                 <input style="display: inline-block;width: 100%" type="text" [(ngModel)]="menu_gun.SalataMenuItems[i].YemekAdi" />
-                                <input *ngIf="menu_gun.FiyatlarGorunsunMu" style="display: inline-block;width: 60px" type="text" [(ngModel)]="menu_gun.YemekMenuItems[i].Fiyat"
-                                />
+                             
                                 <span title="Sil" (click)='satirSilSalata(menu_gun,x)'  
                                     class="delSpan" *ngIf="x.hovering==i">
                                     <i class="fa fa-times"></i>
@@ -181,6 +180,13 @@
                             </div>
                             
                         </li>
+
+                   
+
+                        <div>
+                            4 Çeşit Toplam : <input type="text" [(ngModel)]="menu_gun.ToplamFiyatSalata" />
+                        </div>
+
                     </ul>
         
                 

@@ -12,7 +12,7 @@ npm i -g angular-cli-ghpages
 git config --global user.name "gokmen.yilmaz"
 git config --global user.email "gokmen1977@gmail.com"
 
-ng build --prod --base-href 'https://gokmenyilmaz.github.io/ng2_derinlezzet_webpack'
+ng build --prod
 
 ngh 
 ````
