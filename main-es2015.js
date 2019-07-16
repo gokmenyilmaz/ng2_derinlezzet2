@@ -1,28 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
-/***/ "./$$_lazy_route_resource lazy recursive":
-/*!******************************************************!*\
-  !*** ./$$_lazy_route_resource lazy namespace object ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncaught exception popping up in devtools
-	return Promise.resolve().then(function() {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/index.js!./src/app/_home/home.component.html":
 /*!*********************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/_home/home.component.html ***!
@@ -163,6 +140,29 @@ module.exports = "<div class=\"w3-bar  w3-black\" style=\"display: flex;align-co
 /***/ (function(module, exports) {
 
 module.exports = "<div #dataContainer class=\"inner\">\r\n    <ng-content select=\"[body]\"></ng-content>\r\n\r\n</div>\r\n\r\n<div class=\"buttons\" *ngIf=\"buttons=='evet'\">\r\n    <span class=\"prev w3-display-left\" (click)=\"plusDivs(-1)\"><i class=\"fa fa-chevron-left fa-2x\"></i></span>\r\n    <span class=\"next w3-display-right\" (click)=\"plusDivs(1)\"><i class=\"fa fa-chevron-right fa-2x\"></i></span>\r\n\r\n</div>\r\n\r\n<div #dotContainer class=\"carousel-dots\">\r\n    <!--<span data-value=\"1\"></span>\r\n    <span data-value=\"2\"></span>\r\n    <span data-value=\"3\"></span>-->\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/$$_lazy_route_resource lazy recursive":
+/*!**********************************************************!*\
+  !*** ./src/$$_lazy_route_resource lazy namespace object ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(function() {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
