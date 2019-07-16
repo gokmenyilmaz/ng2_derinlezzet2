@@ -23,12 +23,12 @@
         Bu hafta için herhangi bir menü tanımı yapılmadı.
     </p>
 
-    <section   style="text-align: center">
-            <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
-            <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
-    </section>
-
-    <section  style="display: flex; flex-wrap: wrap;justify-content:space-around;align-items:stretch">
+    <div *ngIf="globalService._userInfo" style="text-align: center">
+        <button class="w3-btn w3-teal" (click)="duzenle()">Düzenle</button>
+        <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
+    </div>
+    
+    <section *ngIf="!_isEditMode"  style="display: flex; flex-wrap: wrap;justify-content:space-around;align-items:stretch">
        <ng-container  *ngFor='let menu_gun of YemekMenuGunListe;let i = index'>
         <fieldset *ngIf="menu_gun.ToplamFiyat!=0" [ngClass]="sutunSitilSinifGetir()" class="w3-display-container w3-col s12  w3-card-2 w3-round  w3-center">
             <div>
