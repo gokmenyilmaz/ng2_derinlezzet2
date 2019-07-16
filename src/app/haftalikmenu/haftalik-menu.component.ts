@@ -169,9 +169,12 @@ export class HaftalikMenuComponent {
         m.YemekMenuItems.push(_yeniYemekMenuItem);
     }
 
-    yeniSalataSatirEkle(m:YemekMenuGun)
+    yeniSatirEkleSalata(m:YemekMenuGun)
     {
         let _yeniYemekMenuItem=new YemekMenuItem("0", "")
+
+        if(m.SalataMenuItems==undefined) m.SalataMenuItems=[];
+
         m.SalataMenuItems.push(_yeniYemekMenuItem);
     }
 
@@ -181,12 +184,25 @@ export class HaftalikMenuComponent {
         this.removeFromArray(m,i);
     }
 
+    satirSilSalata(m:YemekMenuGun,i:YemekMenuItem)
+    {
+        this.removeFromArraySalata(m,i);
+    }
+
     removeFromArray(m:YemekMenuGun, value:any) {
         var idx = m.YemekMenuItems.indexOf(value);
         if (idx !== -1) {
             m.YemekMenuItems.splice(idx, 1);
         }
         return m.YemekMenuItems;
+    }
+
+    removeFromArraySalata(m:YemekMenuGun, value:any) {
+        var idx = m.SalataMenuItems.indexOf(value);
+        if (idx !== -1) {
+            m.SalataMenuItems.splice(idx, 1);
+        }
+        return m.SalataMenuItems;
     }
 
 
@@ -233,8 +249,8 @@ export class HaftalikMenuComponent {
        
        if(fiyatGiriliSayi==1 || fiyatGiriliSayi==2) sinifDizi.push("l6");
        if(fiyatGiriliSayi==3) sinifDizi.push("l4");
-       if(fiyatGiriliSayi==4) sinifDizi.push("l3");
-       if(fiyatGiriliSayi==5) sinifDizi.push("l2");
+       if(fiyatGiriliSayi==4) sinifDizi.push("l6");
+       if(fiyatGiriliSayi==5) sinifDizi.push("l4");
 
        return sinifDizi;
     

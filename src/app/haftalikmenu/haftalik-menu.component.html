@@ -28,7 +28,7 @@
         <button class="w3-btn w3-teal" (click)="kaydet()">Kaydet</button>
     </div>
     
-    <section *ngIf="!_isEditMode"  style="display: flex; flex-wrap: wrap;justify-content:space-around;align-items:stretch">
+    <section id="DisplayHaftalikMenu" *ngIf="!_isEditMode"  style="display: flex; flex-wrap: wrap;justify-content:space-around;align-items:stretch">
        
        <div>
            
@@ -58,33 +58,37 @@
                             <div *ngIf="menu_gun.FiyatlarGorunsunMu" class="yemekfiyat" style="display: inline-block;width: 60px">{{menu_gun.YemekMenuItems[i].Fiyat}}</div>
                         </div>
                     </li>
+
+                    <div *ngIf="menu_gun.ToplamFiyatGorunsunMu" class="fiyat" style="padding-bottom:10px;padding-top:20px;" >
+                        Toplam : <strong style="font-size:1.1rem">{{menu_gun.ToplamFiyat}}</strong>
+                    </div>
                 </ul>
     
-                <ul class="gunSutun" style="margin-left: 15px" >
+                <ul *ngIf="menu_gun.SalataMenuItems" class="gunSutun" style="margin-left: 15px" >
                     <div  style="display: inline-block;width: 100%;text-align: left;font-weight: bold">
-                                SALATALAR</div>
+                                ZEYTİNYAĞLILAR</div>
                     <li *ngFor="let x of menu_gun.SalataMenuItems;let i=index">
                         <div class="yemekMenuItem" style="display: flex;">
                             <div  style="display: inline-block;width: 100%;text-align: center">
                                 {{menu_gun.SalataMenuItems[i].YemekAdi}}</div>
                         </div>
+
                     </li>
+
+                    <div  class="fiyat" style="padding-bottom:10px;padding-top:20px" >
+                        4.Çeşit : <strong style="font-size:1.1rem">20</strong>
+                    </div>
+
+                  
                 </ul>
             </div>
           
-
-            
-
-
-
-            <div *ngIf="menu_gun.ToplamFiyatGorunsunMu" class="fiyat w3-display-bottommiddle w3-block" style="padding-bottom:10px;" >
-                Toplam : <strong style="font-size:1.1rem">{{menu_gun.ToplamFiyat}}</strong>
-            </div>
+         
         </fieldset>
        </ng-container>
     </section>
 
-    <section *ngIf="_isEditMode" >
+    <section name="EditHaftalikMenu" *ngIf="_isEditMode" >
         
         <div  id="sorguPanel">
                     
@@ -151,12 +155,34 @@
                             </div>
                             
                         </li>
-        
                     </ul>
         
                     <div *ngIf="menu_gun.ToplamFiyatGorunsunMu">
                         Toplam : <input type="text" [(ngModel)]="menu_gun.ToplamFiyat" />
                     </div>
+
+
+                    <ul  class="gunSutun">
+                        <div>
+                            <div>Zeytinyağlılar</div>
+                            <span class="w3-btn w3-teal" style="font-size: 12px" (click)="yeniSatirEkleSalata(menu_gun)">
+                                + Satır Ekle
+                            </span>
+                        </div>
+                        <li *ngFor="let x of menu_gun.SalataMenuItems;let i=index" (mouseleave)="x.hovering=null" (mouseenter)="x.hovering=i">
+                            <div  style="display: flex;position: relative">
+                                <input style="display: inline-block;width: 100%" type="text" [(ngModel)]="menu_gun.SalataMenuItems[i].YemekAdi" />
+                                <input *ngIf="menu_gun.FiyatlarGorunsunMu" style="display: inline-block;width: 60px" type="text" [(ngModel)]="menu_gun.YemekMenuItems[i].Fiyat"
+                                />
+                                <span title="Sil" (click)='satirSilSalata(menu_gun,x)'  
+                                    class="delSpan" *ngIf="x.hovering==i">
+                                    <i class="fa fa-times"></i>
+                                </span>
+                            </div>
+                            
+                        </li>
+                    </ul>
+        
                 
                 </fieldset>
             </ng-container>

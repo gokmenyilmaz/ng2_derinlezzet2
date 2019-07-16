@@ -30,7 +30,7 @@ export class FooterBarComponent {
         footerBarService.footerDataGetir()
         .valueChanges()
         .subscribe(data=>{
-            if(data.$exists()){
+            if(data!=null){
               
                 this._firma=data;  
                 this.loadMap();
