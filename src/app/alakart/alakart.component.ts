@@ -38,8 +38,8 @@ export class AlakartComponent implements OnInit {
     }
 
     menuSilindi(item: AlakartMenu) {
-        // var inx = this.alakartMenus.indexOf(item);
-        // this.alakartMenus.splice(inx, 1);
+        var inx = this.alakartMenus.indexOf(item);
+        this.alakartMenus.splice(inx, 1);
     }
 
     ngOnInit() {
@@ -47,22 +47,21 @@ export class AlakartComponent implements OnInit {
         this.alakartService.alakartVerileriniGetir()
         .valueChanges()
         .subscribe (data => {
+ 
+            if (data.length==0) {
+                    this.alakartMenus = data;
+                }
+                else {
+                    this.setBosAlakartMenus();
+                }
+        });
 
             
-            this.alakartMenus = data;
-                // if (data.$exists()) {
-                //     this.alakartMenus = data;
-                // }
-                // else {
-                //     this.setBosAlakartMenus();
-                // }
-    
-            });
 
     }
 
     setBosAlakartMenus() {
-        // this.alakartMenus = [];
+         this.alakartMenus = [];
 
         let alakartMenuItems1: AlakartMenuItem[] = []; alakartMenuItems1.push(new AlakartMenuItem("0", "", "", ""));
         let alakartMenuItems2: AlakartMenuItem[] = []; alakartMenuItems2.push(new AlakartMenuItem("0", "", "", ""));
@@ -79,12 +78,12 @@ export class AlakartComponent implements OnInit {
         let alakartMenu5: AlakartMenu = new AlakartMenu("12.10.2017", "Tatlılar", 200, alakartMenuItems5);
         let alakartMenu6: AlakartMenu = new AlakartMenu("12.10.2017", "İçecekler", 200, alakartMenuItems6);
 
-        // this.alakartMenus.push(alakartMenu1);
-        // this.alakartMenus.push(alakartMenu2);
-        // this.alakartMenus.push(alakartMenu3);
-        // this.alakartMenus.push(alakartMenu4);
-        // this.alakartMenus.push(alakartMenu5);
-        // this.alakartMenus.push(alakartMenu6);
+        this.alakartMenus.push(alakartMenu1);
+        this.alakartMenus.push(alakartMenu2);
+        this.alakartMenus.push(alakartMenu3);
+        this.alakartMenus.push(alakartMenu4);
+        this.alakartMenus.push(alakartMenu5);
+        this.alakartMenus.push(alakartMenu6);
 
     }
 
@@ -94,8 +93,8 @@ export class AlakartComponent implements OnInit {
     }
 
     kaydet() {
-        // this.alakartService.alakartVeriKaydet(this.alakartMenus);
-        // this._isEditMode = false;
+        this.alakartService.alakartVeriKaydet(this.alakartMenus);
+        this._isEditMode = false;
     }
 
 }

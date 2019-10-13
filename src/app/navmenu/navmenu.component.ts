@@ -31,7 +31,7 @@ export class NavmenuComponent {
             if (person != null && person=="selcuk2020" ) {
                 this.globalService._userInfo= 
                 {
-                    displayName: "test",
+                    displayName: "İ.Hakkı Yiğit",
                     email: "test",
                     phoneNumber: "test",
                     photoURL:"test",
