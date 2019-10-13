@@ -26,7 +26,20 @@ export class NavmenuComponent {
         if(this.globalService._userInfo)
              this.globalService.signOut();
         else{
-             this.globalService.signInWithFacebook();
+            var person = prompt("Parolayı giriniz");
+
+            if (person != null && person=="selcuk2020" ) {
+                this.globalService._userInfo= 
+                {
+                    displayName: "test",
+                    email: "test",
+                    phoneNumber: "test",
+                    photoURL:"test",
+                    providerId:"test",
+                    uid: "test"
+                }
+        
+            }
         }
     }
 
